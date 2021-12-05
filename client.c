@@ -62,12 +62,13 @@ int main(int argc, char **argv) {
     }
     
     struct thread_struct thr_str;
-    ret = ioctl(fdisc, THREAD_STRUCT_IOCTL_SET_PID, PID);
+    ret = ioctl(fdisc, THREAD_STRUCT_IOCTL_SET_PID, &PID);
     ret = ioctl(fdisc, THREAD_STRUCT_IOCTL_GET, &thr_str);
     
     printf("PID: %u\n", PID);   
     print_thread_struct(&thr_str);
-    struct page pg_str;
+    
+    struct page pg_str; 
     ret = ioctl(fdisc, PAGE_IOCTL_GET, &pg_str);
     
     print_page_struct(&pg_str);
